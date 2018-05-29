@@ -1,0 +1,19 @@
+{
+  "name": "react-todolist",
+  "version": "1.0.0",
+  "description": "React App to practice the MERN stack, first attempt.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WingChhun/React-TodoList.git"
+  },
+  "author": "James Chhun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WingChhun/React-TodoList/issues"
+  },
+  "homepage": "https://github.com/WingChhun/React-TodoList#readme"
+}
