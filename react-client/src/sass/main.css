@@ -6,3 +6,45 @@ body {
 a {
   color: inherit;
   text-decoration: none; }
+
+.header {
+  text-align: center;
+  border: 2px solid red; }
+  .header__head {
+    color: red; }
+  .header__sub {
+    color: red; }
+
+.time {
+  border: 2px solid yellow; }
+  .time__value {
+    font-size: 3rem;
+    letter-spacing: 0.4rem; }
+
+.footer {
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: 2.5rem;
+  height: 200px;
+  border: 2px solid black; }
+  .footer__list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border: 2px solid magenta; }
+    .footer__list--item {
+      list-style: none;
+      border: 2px solid #ffd1c3; }
+      .footer__list--item a {
+        text-decoration: none;
+        font-size: 3.5rem;
+        transition: 0.4s all ease; }
+        .footer__list--item a:hover {
+          transform: scale(1.02);
+          color: green; }
+        .footer__list--item a:focus {
+          transform: translateY(0.1rem); }
+  .footer__copyright {
+    font-size: 1.6rem;
+    color: #ddd;
+    letter-spacing: 0.1rem; }

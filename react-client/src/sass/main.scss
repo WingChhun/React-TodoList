@@ -5,5 +5,75 @@
 @import "./layout/_home.scss";
 
 //TODO: Main component
-.main {
+.main {}
+
+//TODO:Header Component
+.header {
+    text-align: center;
+    border: 2px solid red;
+    &__head {
+        //header title
+        color: red;
     }
+    &__sub {
+        //under header
+        color: red;
+    }
+}
+//TODO: Time component
+.time {
+    border: 2px solid yellow;
+    &__value {
+        font-size: 3rem;
+        letter-spacing: 0.4rem;
+    }
+}
+
+
+//TODO: Footer Component
+.footer {
+
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 2.5rem;
+    height: 200px;
+    border: 2px solid black;
+    //* whole container for social icons
+    &__list {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        border: 2px solid magenta;
+        //* The list-item, li-items for footer list
+        &--item {
+            list-style: none;
+            border: 2px solid #ffd1c3;
+            //* The links or FA icons styling
+            & a {
+
+                text-decoration: none;
+                font-size: 3.5rem;
+                transition: 0.4s all ease;
+                //*When user hovers over
+                &:hover {
+                    transform: scale(1.02);
+                    color: green;
+                }
+                //* When user clicks
+                &:focus {
+                    transform: translateY(.1rem);
+
+                }
+            }
+        }
+
+    }
+    // * end list
+
+    //& copyright at bottom
+    &__copyright {
+        font-size: 1.6rem;
+        color: #ddd;
+        letter-spacing: 0.1rem;
+    }
+}
