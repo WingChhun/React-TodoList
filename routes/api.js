@@ -3,6 +3,8 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
 
+//* install npm package random-quote
+const randomQuote = require('random-quote');
 //* import mongodb model for todos
 const DB_TODOS = require("../models/todo.js");
 
@@ -22,7 +24,6 @@ router.get("/", (req, res) => {
         .find({})
         .then((users) => {
             res.json(users);
-            DB_TODOS.save();
         })
         .catch(err => console.log("Error at /api", err));
 });
@@ -35,14 +36,14 @@ router.post('/', (req, res) => {
     /*
  * {
  *  task:String,
- * completed:boolean,
+ * completed:boolean, - set to false initially
  * created:date(default)
  * }
 */
 
     const newTodo = {
         task: req.body.task,
-        completed: true,
+        completed: false,
         created: Date.now()
     };
     DB_TODOS
@@ -55,11 +56,35 @@ router.post('/', (req, res) => {
 //TODO: @ROUTE: /api/update
 //TODO: @PURPOSE: create a new Todo
 //TODO: @ACCESS :PUBLIC
-router.post("/update", (req, res) => {});
+router.post("/update/:id", (req, res) => {
+
+    //* Req.body._id is mongodb unique id
+    //* Update the found todo
+    //* mainly change the date and task, completed should be passed over
+
+    const todoID = req.params.id;
+    const newTodo = {
+        task: req.body.task,
+        completed: false,
+        created: Date.now()
+    }
+    DB_TODOS
+        .findByIdAndUpdate(req.params.id, newTodo)
+        .then(model => res.json(model))
+        .catch(e => console.log("Could not find todo", e));
+});
 //TODO: @ROUTE: /api/create
 //TODO: @PURPOSE: create a new Todo
 //TODO: @ACCESS :PUBLIC
-router.post("/delete", (req, res) => {});
+router.post("/delete/:id", (req, res) => {
+
+    const todoID = req.params.id;
+    DB_TODOS
+        .findByIdAndRemove(todoID)
+        .then(success => res.json({msg: "success deleted"}))
+        .catch(e => console.log(e));
+
+});
 
 //TODO: @ROUTE: /api/clear
 //TODO: @PURPOSE: clear all todos
@@ -68,6 +93,16 @@ router.post("/clear", (req, res) => {
     DB_TODOS
         .remove()
         .then(() => res.json({msg: "cleared all"}).catch(e => console.log(e)))
+});
+
+//TODO: @ROUTE: /api/quote
+//TODO: @PURPOSE: get quote using package - random-Quote
+//TODO: @ACCESS :PUBLIC - WORKING
+
+router.get("/quote", (req, res) => {
+    randomQuote()
+        .then(quote => res.json(quote))
+        .catch(e => console.log(e));
 });
 
 //TODO: export router
