@@ -5,7 +5,7 @@ import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
 import "./sass/main.css";
 //TODO: Import components
 import Main from "./container/Main";
-
+import Footer from "./components/Footer";
 class Router extends Component {
 
     componentWillMount()
