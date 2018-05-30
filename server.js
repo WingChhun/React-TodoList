@@ -28,6 +28,7 @@ app.use(bodyParser.json());
 //* Use API Routes
 app.use("/api", API);
 
+
 //TODO: start server
 app.listen(PORT, () => {
     console.log("Server has started on PORT = ", PORT);
