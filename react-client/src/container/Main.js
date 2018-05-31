@@ -4,6 +4,7 @@ import "../sass/main.css";
 //* Import components up here
 import Header from "../components/Header";
 import TodoList from "../components/Todo/TodoList";
+import Quote from "../components/Quote";
 import Footer from "../components/Footer";
 //TODO: Main class, main components here
 class Main extends Component
@@ -16,7 +17,7 @@ class Main extends Component
      */
     state = {
         todos: [],
-        quote: [],
+        quote: {},
         time: "XX:XX AM",
         seconds: 0
     };
@@ -25,7 +26,7 @@ class Main extends Component
     //* ComponentWillMount -> run updateTime
     componentWillMount()
     {
-        this.updateTime();
+        this._updateTime();
     }
     async componentDidMount()
     {
@@ -34,12 +35,12 @@ class Main extends Component
 
         //* setInterval on window to change time
         window.setInterval(() => {
-            this.updateTime();
-            this.getSeconds();
+            this._updateTime();
+            this._getSeconds();
         }, 1000);
     }
 
-    updateTodos = (todos) => {
+    _updateTodos = (todos) => {
         this.setState({
             ...this.state,
             todos
@@ -49,12 +50,13 @@ class Main extends Component
     //* State functions *Render
     render()
     {
-        const {updateTime} = this.updateTime;
+        const {_updateTime} = this._updateTime;
         return (
             <div className="main">
                 <Header Time={this.state.time}/> {/*TodoInput*/}
-{/*TodoInput*/}
-                <TodoList todos={this.state.todos} updateTodos={this.updateTodos}/> {/*Quote*/}
+                {/*TodoInput*/}
+                <TodoList todos={this.state.todos} updateTodos={this._updateTodos}/> {/*Quote*/}
+                <Quote content = {this.state.quote.content} _updateQuote ={this._updateQuote} quote={this.state.quote}/>
                 <Footer/>
 
             </div>
@@ -70,7 +72,7 @@ class Main extends Component
       TODO: Gets Time, return as string,
       TODO: Should be called everytime Seconds is = 60, update,
      */
-    updateTime = () => {
+    _updateTime = () => {
         //*new instance of time
         const event = new Date();
 
@@ -80,6 +82,11 @@ class Main extends Component
         let AM_PM = (Hours < 12
             ? 'AM'
             : 'PM');
+        //* Change Hours depending on the time
+        Hours = (Hours > 12
+            ? Hours - 12
+            : Hours);
+        //* Make final time as a string
         let time = `${Hours}:${Minutes}:${AM_PM}`;
         this.setState({
             ...this.state,
@@ -88,7 +95,7 @@ class Main extends Component
 
     }
     //TODO: Function to getSeconds and setState
-    getSeconds = () => {
+    _getSeconds = () => {
         const event = new Date();
         const seconds = event.getSeconds();
         //* updateSeconds
@@ -97,6 +104,14 @@ class Main extends Component
             seconds
         });
     }
+    //TODO: Function to update this.state.quote
+    _updateQuote = (quote) => {
+        this.setState({
+            ...this.state,
+            quote
+        });
+        console.log("Success, this.state.quote", this.state.quote);
+    };
 }
 
 export default Main;
