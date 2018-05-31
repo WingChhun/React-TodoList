@@ -24,7 +24,7 @@ class TodoList extends Component {
     {
         const {updateTodos} = this.props;
         //Connect to API
-        const res = await fetch("/api")
+        const res = await fetch("/api");
         const todos = await res.json();
 
         updateTodos(todos);
