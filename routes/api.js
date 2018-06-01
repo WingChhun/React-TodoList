@@ -105,5 +105,54 @@ router.get("/quote", (req, res) => {
         .catch(e => console.log(e));
 });
 
+//TODO: @Route /api/completed
+//TODO: @PURPOSE: Change the status of completed
+router.post("/completed/:id", (req, res) => {
+    const todoID = req.params.id;
+    const task = req.body.task;
+    const created = req.body.created;
+
+    const completed = req.body.completed;
+    const newTodo = {
+        task,
+        created,
+        completed: !completed
+    };
+    //*Find todoID then update
+    DB_TODOS
+        .findById(todoID)
+        .then(todo => {
+            todo.completed = !todo.completed;
+            todo.save((err, todo) => {
+
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log("successs");
+                    //*redirect to be able to retrieve the todo
+                    res.json(todo);
+                }
+
+            });
+
+        })
+        .catch(e => console.log(e));
+
+}); //! end completed
+//TODO: new route, show route, to retrieve a single todo
+//* Intention to be used alongside update route
+router.get("/:id", (req, res) => {
+    console.log("req.pasrams.id", req.params.id);
+    DB_TODOS.findOne({
+        _id: req.params.id
+    }, (err, todo) => {
+        if (err) {
+            console.log(err);
+        }
+       
+        res.json(todo);
+    })
+});
+
 //TODO: export router
 module.exports = router;
