@@ -3,6 +3,7 @@ import "../sass/main.css";
 
 //* Import components up here
 import Header from "../components/Header";
+import InputBox from "../components/InputBox";
 import TodoList from "../components/Todo/TodoList";
 import Quote from "../components/Quote";
 import Footer from "../components/Footer";
@@ -55,8 +56,13 @@ class Main extends Component
             <div className="main">
                 <Header Time={this.state.time}/> {/*TodoInput*/}
                 {/*TodoInput*/}
+                <InputBox _updateTodos ={this._updateTodos}/>
                 <TodoList todos={this.state.todos} updateTodos={this._updateTodos}/> {/*Quote*/}
-                <Quote content = {this.state.quote.content} _updateQuote ={this._updateQuote} quote={this.state.quote}/>
+                <Quote
+                    content={this.state.quote.content}
+                    _updateQuote
+                    ={this._updateQuote}
+                    quote={this.state.quote}/>
                 <Footer/>
 
             </div>
@@ -83,9 +89,13 @@ class Main extends Component
             ? 'AM'
             : 'PM');
         //* Change Hours depending on the time
+        //* Prepend a 0 to Minutes if Single digit
         Hours = (Hours > 12
             ? Hours - 12
             : Hours);
+        Minutes = (Minutes < 10
+            ? `0${Minutes}`
+            : Minutes);
         //* Make final time as a string
         let time = `${Hours}:${Minutes}:${AM_PM}`;
         this.setState({
@@ -110,7 +120,7 @@ class Main extends Component
             ...this.state,
             quote
         });
-        console.log("Success, this.state.quote", this.state.quote);
+        //*Debug console.log("Success, this.state.quote", this.state.quote);
     };
 }
 
