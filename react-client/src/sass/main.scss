@@ -7,6 +7,13 @@
 //TODO: Main component
 .main {}
 
+body {
+    font-family: Lato, sans-serif;
+}
+h1,
+h3 {
+    font-family: Raleway, Lato, sans-serif;
+}
 //TODO:Header Component
 .header {
     text-align: center;
@@ -28,7 +35,6 @@
         letter-spacing: 0.4rem;
     }
 }
-
 
 //TODO: Footer Component
 .footer {
@@ -75,5 +81,83 @@
         font-size: 1.6rem;
         color: #ddd;
         letter-spacing: 0.1rem;
+    }
+}
+
+//TODO: Todolist
+.todolist {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: 3px solid purple;
+    width: 85%;
+    min-height: 400px;
+    margin-bottom: 80px;
+    //* Container for todolist item
+    &__item {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        vertical-align: middle;
+
+        align-items: center;
+        border: 2.5px dotted violet;
+        margin-bottom: 10px;
+    }
+    //*Container for check and circle
+    &__status--container {
+        width: 20%;
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid green;
+    }
+    //* Actual task as a h3
+    &__task {
+        border: 1px solid black;
+        width: 75%;
+        font-size: 24px;
+        letter-spacing: 0.1px;
+    }
+    //* Font-awesome Checkmark icon
+    &__done {
+        transition: 0.4s all ease;
+        color: $color-portal-light;
+        &:hover {
+            color: $color-portal-dark;
+        }
+        &:focus {}
+    }
+    //*Font awesome times-circle icon
+    &__delete {
+        transition: 0.4s all ease;
+        color: $color-delete;
+        &:hover {
+            color: rgba($color-delete,.8);
+        }
+        &:focus {}
+    }
+}
+
+//TODO: InputBox
+
+form {
+    margin: 0 auto;
+    text-align: center;
+    margin: 35px auto;
+}
+.inputbox {
+
+    transition: all 0.4s ease;
+    width: 75%;
+    font-size: 20px;
+
+    border: 3px solid pink;
+    padding: 12px 8px;
+    text-align: center;
+    &:focus {
+        outline: none;
+        width:85%;
     }
 }

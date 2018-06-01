@@ -7,6 +7,13 @@ a {
   color: inherit;
   text-decoration: none; }
 
+body {
+  font-family: Lato, sans-serif; }
+
+h1,
+h3 {
+  font-family: Raleway, Lato, sans-serif; }
+
 .header {
   text-align: center;
   border: 2px solid red; }
@@ -48,3 +55,58 @@ a {
     font-size: 1.6rem;
     color: #ddd;
     letter-spacing: 0.1rem; }
+
+.todolist {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border: 3px solid purple;
+  width: 85%;
+  min-height: 400px;
+  margin-bottom: 80px; }
+  .todolist__item {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    vertical-align: middle;
+    align-items: center;
+    border: 2.5px dotted violet;
+    margin-bottom: 10px; }
+  .todolist__status--container {
+    width: 20%;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid green; }
+  .todolist__task {
+    border: 1px solid black;
+    width: 75%;
+    font-size: 24px;
+    letter-spacing: 0.1px; }
+  .todolist__done {
+    transition: 0.4s all ease;
+    color: #A0F951; }
+    .todolist__done:hover {
+      color: #1B963D; }
+  .todolist__delete {
+    transition: 0.4s all ease;
+    color: #DD1155; }
+    .todolist__delete:hover {
+      color: rgba(221, 17, 85, 0.8); }
+
+form {
+  margin: 0 auto;
+  text-align: center;
+  margin: 35px auto; }
+
+.inputbox {
+  transition: all 0.4s ease;
+  width: 75%;
+  font-size: 20px;
+  border: 3px solid pink;
+  padding: 12px 8px;
+  text-align: center; }
+  .inputbox:focus {
+    outline: none;
+    width: 85%; }
