@@ -41,14 +41,20 @@ class TodoList extends Component {
     render()
     {
         //* pull todos array from this.props
-        const {todos} = this.props;
+        const {todos, updateSingleTodo} = this.props;
         return (
 
             <div className="todolist">
-          
+
                 <h1>TodoList</h1>
                 {/* Map todos tasks*/}
-                {todos.map((todo, index) => <Todo todo={todo} key={todo._id}/>)
+                {todos.map((todo, index) => <Todo
+                    todo={todo}
+                    index={index}
+                    key={todo._id}
+                    updateSingleTodo={this.props.updateSingleTodo}
+                    updateTodos
+                    ={this.props.updateTodos}/>)
 }
             </div>
 
