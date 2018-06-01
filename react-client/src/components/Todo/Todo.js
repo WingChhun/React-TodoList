@@ -5,8 +5,12 @@ import PropTypes from 'prop-types';
 const Todo = ({todo}) => {
 
     return (
-        <div className="todo__item">
-            <h1>{todo.task}</h1>
+        <div className="todolist__item">
+            <h3 className="todolist__task">{todo.task}</h3>
+            <div className = "todolist__status--container">
+            <a href="" className="todolist__done fa fa-2x fa-check"/>
+            <a href="" className="todolist__delete fa fa-2x fa-times-circle"/>
+            </div>
         </div>
     )
 }
