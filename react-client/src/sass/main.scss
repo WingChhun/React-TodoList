@@ -129,6 +129,18 @@ h3 {
         }
         &:focus {}
     }
+    &__done,
+    &__task {
+        padding: 8px 7px;
+        &:hover {
+            transform: scale(1.02);
+            cursor: pointer;
+        }
+        &::focus {
+            transform: translateY(-3px);
+        
+        }
+    }
     //*Font awesome times-circle icon
     &__delete {
         transition: 0.4s all ease;
@@ -158,6 +170,26 @@ form {
     text-align: center;
     &:focus {
         outline: none;
-        width:85%;
+        width: 85%;
     }
+}
+
+//TODO: Quote
+.quote {
+    border: 1px solid red;
+    width: 85%;
+
+    margin: 0 auto;
+    text-align: center;
+    &__text {
+        font-size: 16px;
+        padding: 8px 6px;
+
+    }
+}
+
+//TODO: Fontawesome
+.fa-quote-left,
+.fa-quote-right {
+    margin: 0 3px;
 }

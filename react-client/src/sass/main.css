@@ -89,6 +89,13 @@ h3 {
     color: #A0F951; }
     .todolist__done:hover {
       color: #1B963D; }
+  .todolist__done, .todolist__task {
+    padding: 8px 7px; }
+    .todolist__done:hover, .todolist__task:hover {
+      transform: scale(1.02);
+      cursor: pointer; }
+    .todolist__done::focus, .todolist__task::focus {
+      transform: translateY(-3px); }
   .todolist__delete {
     transition: 0.4s all ease;
     color: #DD1155; }
@@ -110,3 +117,16 @@ form {
   .inputbox:focus {
     outline: none;
     width: 85%; }
+
+.quote {
+  border: 1px solid red;
+  width: 85%;
+  margin: 0 auto;
+  text-align: center; }
+  .quote__text {
+    font-size: 16px;
+    padding: 8px 6px; }
+
+.fa-quote-left,
+.fa-quote-right {
+  margin: 0 3px; }
