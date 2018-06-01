@@ -70,7 +70,10 @@ class Quote extends Component
             <div className="quote">
 
                 <p className="quote__text">
-                    <i className="fa  fa-quote-left"/> {this._retrievedQuote && this._parseQuote(content)}
+                    <i className="fa  fa-quote-left"/>
+                    <em>
+                        {this._retrievedQuote && this._parseQuote(content)}
+                    </em>
                     <i className="fa  fa-quote-right"/>
                 </p>
             </div>
