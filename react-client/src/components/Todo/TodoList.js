@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 //* Import components
 import Todo from "./Todo";
-
+import InputBox from "../InputBox";
 /*
  TODO: TodoList component
  TODO: Retrieve Todos from API
@@ -45,6 +45,7 @@ class TodoList extends Component {
         return (
 
             <div className="todolist">
+          
                 <h1>TodoList</h1>
                 {/* Map todos tasks*/}
                 {todos.map((todo, index) => <Todo todo={todo} key={todo._id}/>)
