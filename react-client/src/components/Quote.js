@@ -48,7 +48,6 @@ class Quote extends Component
     */
     _parseQuote = (content) => {
 
-        console.log("Quote", content);
         content = content.replace(/[^a-zA-Z0-9-. ]/g, '');
         //* remove the p's by splitting content into an array, pop reverse pop and join
         let temp = content.split('');
@@ -59,7 +58,6 @@ class Quote extends Component
             .reverse()
             .join('');
 
-        //console.log("New Content", content);
         return content;
     }
 
@@ -82,6 +80,11 @@ class Quote extends Component
 
 }
 
-Quote.propTypes = {};
+Quote.propTypes = {
+
+    quote: PropTypes.object.isRequired,
+    content: PropTypes.string
+
+};
 
 export default Quote;
