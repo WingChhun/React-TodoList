@@ -57,7 +57,11 @@ class Main extends Component
                 <Header Time={this.state.time}/> {/*TodoInput*/}
                 {/*TodoInput*/}
                 <InputBox _updateTodos ={this._updateTodos}/>
-                <TodoList todos={this.state.todos} updateTodos={this._updateTodos}/> {/*Quote*/}
+                <TodoList
+                    todos={this.state.todos}
+                    updateTodos={this._updateTodos}
+                    updateSingleTodo
+                    ={this._updateSingleTodo}/> {/*Quote*/}
                 <Quote
                     content={this.state.quote.content}
                     _updateQuote
@@ -122,6 +126,18 @@ class Main extends Component
         });
         //*Debug console.log("Success, this.state.quote", this.state.quote);
     };
+    //TODO: updateSingleTodo
+    //* update an occurence of todos in state
+    _updateSingleTodo = (todo, index) => {
+        let newTodos = [...this.state.todos];
+        newTodos[index] = todo;
+        this.setState({
+            ...this.state,
+            todos: newTodos
+        });
+        console.log("Success update single todo")
+        console.log(`this.state.todos[${index}] = `, this.state.todos[index]);
+    }
 }
 
 export default Main;
