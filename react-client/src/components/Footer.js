@@ -5,8 +5,7 @@ const Footer = () => {
     return (
 
         <footer className="footer">
-            <h1>
-                Footer here</h1>
+           
             <ul className="footer__list">
                 <li className="footer__list--item"><a href="" className="fa fa-2x fa-github-square"/></li>
                 <li className="footer__list--item"><a href="" className="fa fa-2x fa-instagram"/></li>
