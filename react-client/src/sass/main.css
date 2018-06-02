@@ -115,7 +115,8 @@ h3 {
 
 .main {
   min-height: 90%;
-  max-height: 90%; }
+  max-height: 90%;
+  z-index: -2; }
 
 form {
   margin: 0 auto;
