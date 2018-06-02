@@ -14,6 +14,8 @@ import evening from "../img/evening.jpg";
 import afternoon from "../img/afternoon.jpg";
 import morning from "../img/morning.jpg";
 
+//TODO: Variables
+let backgroundI = "";
 class Main extends Component
 {
 
@@ -55,8 +57,8 @@ class Main extends Component
             }
 
         }
-
     }
+
     async componentDidMount()
     {
         // Connect to API const res = await fetch("/api") const todos = await
@@ -88,32 +90,6 @@ class Main extends Component
         });
     }
     //* API Function
-    //* State functions *Render
-    render()
-    {
-        const {_updateTime} = this._updateTime;
-        return (
-            <Background className="main">
-                <Header Time={this.state.time}/> {/*TodoInput*/}
-                {/*TodoInput*/}
-                <InputBox _updateTodos ={this._updateTodos}/>
-                <TodoList
-                    todos={this.state.todos}
-                    updateTodos={this._updateTodos}
-                    updateSingleTodo
-                    ={this._updateSingleTodo}/> {/*Quote*/}
-                <Quote
-                    content={this.state.quote.content}
-                    _updateQuote
-                    ={this._updateQuote}
-                    quote={this.state.quote}/>
-                <Footer/>
-
-            </Background>
-
-        );
-
-    } //! End Render
 
     //* Extra functions to be passed as props
 
@@ -190,15 +166,9 @@ class Main extends Component
     //* Change image depending on this.state.hours
     _updateBackground = (status) => {
 
-        const morningImg = "https://images.unsplash.com/photo-1503038324980-f38756a54c7d?ixlib=rb-0.3.5&ixid" +
-                "=eyJhcHBfaWQiOjEyMDd9&s=a8fefc558d1d35dc670dafed1b02c537&auto=format&fit=crop&w=" +
-                "1350&q=80";
-        const afternoonImg = "https://images.unsplash.com/photo-1516893623281-98535aaa2205?ixlib=rb-0.3.5&ixid" +
-                "=eyJhcHBfaWQiOjEyMDd9&s=f38c904c2615659c0bf62b3e18457b5a&auto=format&fit=crop&w=" +
-                "1350&q=80";
-        const eveningImg = "https://images.unsplash.com/photo-1515780010305-0d4bbd149cda?ixlib=rb-0.3.5&ixid" +
-                "=eyJhcHBfaWQiOjEyMDd9&s=290520babcf3a21315f4bf2899dc044f&auto=format&fit=crop&w=" +
-                "1350&q=80";
+        const morningImg = morning;
+        const afternoonImg = afternoon;
+        const eveningImg = evening;
         let backgroundImg = "";
         //*Logic change state change image
         switch (status) {
@@ -219,20 +189,45 @@ class Main extends Component
             ...this.state,
             backgroundImg
         });
-    }
 
+        backgroundI = this.state.backgroundImg;
+    }
+    //* State functions *Render
+    render()
+    {
+        const {_updateTime} = this._updateTime;
+        return (
+            <div>
+                <div className="main">
+                    <Header Time={this.state.time}/> {/*TodoInput*/}
+                    {/*TodoInput*/}
+                    <InputBox _updateTodos ={this._updateTodos}/>
+                    <TodoList
+                        todos={this.state.todos}
+                        updateTodos={this._updateTodos}
+                        updateSingleTodo
+                        ={this._updateSingleTodo}/> {/*Quote*/}
+                    <Quote
+                        content={this.state.quote.content}
+                        _updateQuote
+                        ={this._updateQuote}
+                        quote={this.state.quote}/>
+
+                </div>
+                <Footer/>
+            </div>
+        );
+
+    } //! End Render
 }
 
+console.log(evening);
 export default Main;
-//*styled component *backgroundImg
-//*chose background image
-
-export const Background = styled.div `
-  background: url(${afternoon}) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  max-height:90%;
-`;
-console.log(Background);
+// *styled component *backgroundImg *chose background image export const
+// Background = styled.div ` background:  url(${morning})  no-repeat center
+// center fixed; -webkit-background-size: cover; -moz-background-size: cover;
+// -o-background-size: cover; background-size: cover; max-height:90%;
+// filter:blur(1.04); padding:30px ; `; //TODO: Container will have a box shadow
+// and card export const Container = styled.div ` margin: 0 auto; width:90%;
+// box-shadow:3px 8px 60px rgba(#000, 0.4); background-color:#E6E4E2; border:3px
+// solid white; `;
