@@ -92,7 +92,8 @@ router.post("/delete/:id", (req, res) => {
 router.post("/clear", (req, res) => {
     DB_TODOS
         .remove()
-        .then(() => res.json({msg: "cleared all"}).catch(e => console.log(e)))
+        .then(() => res.json({msg: "cleared all"}))
+        .catch(e => console.log(e))
 });
 
 //TODO: @ROUTE: /api/quote
@@ -149,7 +150,7 @@ router.get("/:id", (req, res) => {
         if (err) {
             console.log(err);
         }
-       
+
         res.json(todo);
     })
 });
