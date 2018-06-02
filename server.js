@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-
+const path = require('path');
 const PORT = 5000 || process.env.PORT; // * Port to listen on
 const keys = require("./config/keys");
 
@@ -28,6 +28,14 @@ app.use(bodyParser.json());
 //* Use API Routes
 app.use("/api", API);
 
+//SErver static assets if in production
+if (process.env.NODE_ENV === 'production') {
+    //set static folder
+    app.use(express.static('./react-client/build'));
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'react-client', 'build', 'index.html'));
+    });
+}
 
 //TODO: start server
 app.listen(PORT, () => {
