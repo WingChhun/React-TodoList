@@ -15,9 +15,8 @@
     "homepage": "https://wingchhun.github.io/wingchhun/React-TodoList",
     "scripts": {
 
-        "start-js": "react-scripts start",
-      
-        "start": "npm-run-all -p watch-css start-js",
+        "start": "react-scripts start",
+        "start-js": "npm-run-all -p watch-css start-js",
         "build": "react-scripts build",
         "build-css": "node-sass-chokidar src/ -o src/",
         "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
