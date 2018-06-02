@@ -138,7 +138,7 @@ h3 {
         }
         &::focus {
             transform: translateY(-3px);
-        
+
         }
     }
     //*Font awesome times-circle icon
@@ -150,6 +150,11 @@ h3 {
         }
         &:focus {}
     }
+}
+.main {
+    min-height: 90%;
+    max-height: 90%;
+    z-index:-2;
 }
 
 //TODO: InputBox

@@ -102,6 +102,10 @@ h3 {
     .todolist__delete:hover {
       color: rgba(221, 17, 85, 0.8); }
 
+.main {
+  min-height: 90%;
+  max-height: 90%; }
+
 form {
   margin: 0 auto;
   text-align: center;
