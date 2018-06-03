@@ -32,7 +32,7 @@ if (process.env.NODE_ENV === 'production') {
 
         res.sendFile(path.resolve(__dirname, 'react-client', 'build', 'index.html'));
     });
-} else if (!(process.env.NODE_ENV === 'production')) {
+} else {
 
     //* Use API Routes
     app.use("/api", API);
