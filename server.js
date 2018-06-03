@@ -26,17 +26,16 @@ app.use(bodyParser.json());
 // "initial route"}); }); SErver static assets if in production
 if (process.env.NODE_ENV === 'production') {
     // Set static folder
-    app.use(express.static('react-client/build'));
+    app.use(express.static(path.resolve(__dirname, "react-client/build")));
 
     app.get('*', (req, res) => {
-
-        res.sendFile(path.resolve(__dirname, 'react-client', 'build', 'index.html'));
+        res.sendFile(path.resolve(__dirname, 'react-client/build', 'index.html'));
     });
-} else {
-
-    //* Use API Routes
-    app.use("/api", API);
 }
+
+//* Use API Routes
+app.use("/api", API);
+
 //TODO: start server
 app.listen(PORT, () => {
     console.log("Server has started on PORT = ", PORT);
