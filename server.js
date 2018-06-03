@@ -23,21 +23,20 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 // TODO: Route configuration app.get("/", (req, res) => {     res.json({msg:
-// "initial route"}); });
-
-//* Use API Routes
-app.use("/api", API);
-
-//SErver static assets if in production
+// "initial route"}); }); SErver static assets if in production
 if (process.env.NODE_ENV === 'production') {
     // Set static folder
-    app.use(express.static(path.join(__dirname, 'react-client/build')));
+    app.use(express.static('react-client/build'));
 
     app.get('*', (req, res) => {
+
         res.sendFile(path.resolve(__dirname, 'react-client', 'build', 'index.html'));
     });
-}
+} else if (!(process.env.NODE_ENV === 'production')) {
 
+    //* Use API Routes
+    app.use("/api", API);
+}
 //TODO: start server
 app.listen(PORT, () => {
     console.log("Server has started on PORT = ", PORT);
