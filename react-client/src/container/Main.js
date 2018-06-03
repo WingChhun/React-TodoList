@@ -221,13 +221,6 @@ class Main extends Component
     } //! End Render
 }
 
-console.log(evening);
+
 export default Main;
 // *styled component *backgroundImg *chose background image export const
-// Background = styled.div ` background:  url(${morning})  no-repeat center
-// center fixed; -webkit-background-size: cover; -moz-background-size: cover;
-// -o-background-size: cover; background-size: cover; max-height:90%;
-// filter:blur(1.04); padding:30px ; `; //TODO: Container will have a box shadow
-// and card export const Container = styled.div ` margin: 0 auto; width:90%;
-// box-shadow:3px 8px 60px rgba(#000, 0.4); background-color:#E6E4E2; border:3px
-// solid white; `;

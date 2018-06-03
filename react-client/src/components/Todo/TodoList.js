@@ -46,7 +46,6 @@ class TodoList extends Component {
 
             <div className="todolist">
 
-     
                 {/* Map todos tasks*/}
                 {todos.map((todo, index) => <Todo
                     todo={todo}
