@@ -10,7 +10,7 @@
         "start": "node server.js",
         "client": "npm start --prefix react-client",
         "dev": "concurrently \"npm run server-js\"  \"npm run client\"",
-        "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix react-client && npm build --prefix react-client"
+        "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix react-client && npm run build --prefix react-client"
     },
     "repository": {
         "type": "git",

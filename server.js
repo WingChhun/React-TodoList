@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 const PORT = process.env.PORT || 5000; // * Port to listen on
 const keys = require("./config/keys");
-
+const dev = (process.env.NODE_ENV === 'production');
 //* Import Routes
 const API = require("./routes/api.js");
 
@@ -24,14 +24,15 @@ app.use(bodyParser.json());
 
 // TODO: Route configuration app.get("/", (req, res) => {     res.json({msg:
 // "initial route"}); }); SErver static assets if in production
-if (process.env.NODE_ENV === 'production') {
-    // Set static folder
-    app.use(express.static(path.resolve(__dirname, "react-client/build")));
+if (dev) {
+    //*If in production mode (HEROKU)
+    app.use(express.static(path.resolve(__dirname, 'react-client/build')));
 
-    app.get('*', (req, res) => {
+    app.get("*", (req, res) => {
         res.sendFile(path.resolve(__dirname, 'react-client/build', 'index.html'));
+
     });
-}
+} //! End
 
 //* Use API Routes
 app.use("/api", API);
